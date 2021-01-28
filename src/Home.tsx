@@ -1,8 +1,16 @@
+/** Home page
+ * @format
+ */
+
 import React from 'react';
 import {View, Image} from 'react-native';
 import * as Progress from 'react-native-progress';
 import {Button, Icon, Text} from 'react-native-elements';
-import picture from './img/human_alex.jpg';
+import pic1 from './img/human_alex.jpg';
+import pic2 from './img/crown.png';
+
+const prof_pic = Image.resolveAssetSource(pic1).uri;
+const icon = Image.resolveAssetSource(pic2).uri;
 
 const HomeScreen = ({navigation}) => {
   //   useEffect(() => {
@@ -70,7 +78,7 @@ const HomeScreen = ({navigation}) => {
           marginTop: '15%',
           alignSelf: 'center',
         }}
-        source={require('./img/human_alex.jpg')}
+        source={{uri: prof_pic}}
       />
       <Text
         style={{
@@ -79,7 +87,7 @@ const HomeScreen = ({navigation}) => {
           alignSelf: 'center',
           marginTop: 10,
         }}>
-        LAM KEN LUN
+        ALEX LIMPEH
       </Text>
       <View style={{flexDirection: 'row', marginTop: 10, alignSelf: 'center'}}>
         <Image
@@ -89,7 +97,7 @@ const HomeScreen = ({navigation}) => {
             justifyContent: 'center',
             alignSelf: 'center',
           }}
-          source={require('./img/crown.png')}
+          source={{uri: icon}}
         />
         <Text style={{paddingLeft: 12, fontSize: 20, fontWeight: 'bold'}}>
           CONQUERER
