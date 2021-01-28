@@ -13,54 +13,6 @@ const prof_pic = Image.resolveAssetSource(pic1).uri;
 const icon = Image.resolveAssetSource(pic2).uri;
 
 const HomeScreen = ({navigation}) => {
-  //   useEffect(() => {
-  //     const subscribe = firestore()
-  //       .collection('history')
-  //       .orderBy('timecode', 'desc')
-  //       .onSnapshot((snapshot) => {
-  //         let history: any[] = [];
-  //         snapshot.forEach((document) => {
-  //           history.push({...document.data(), id: document.id});
-  //           setHistory(history);
-  //         });
-  //       });
-
-  //     return () => subscribe();
-  //   }, []);
-
-  //   const WriteHistory = (item) => {
-  //     firestore()
-  //       .collection('history')
-  //       .doc(item.id)
-  //       .delete()
-  //       .catch(() => Alert.alert('Warning', 'Write failure.'));
-  //   };
-
-  //   const RenderItem = ({item}) => (
-  //     <LongPressGestureHandler
-  //       onHandlerStateChange={({nativeEvent}) => {
-  //         if (nativeEvent.state === State.ACTIVE) {
-  //         }
-  //       }}>
-  //       <ListItem
-  //         containerStyle={{
-  //           margin: 10,
-  //           backgroundColor: '#191919',
-  //           borderRadius: 8,
-  //           elevation: 1,
-  //         }}>
-  //         <ListItem.Content>
-  //           <ListItem.Title h4>
-  //             {/* {moment(item.timecode).format('ll')} */}
-  //           </ListItem.Title>
-  //           <ListItem.Subtitle style={{color: 'white'}}>
-  //             {item.txt}
-  //           </ListItem.Subtitle>
-  //         </ListItem.Content>
-  //       </ListItem>
-  //     </LongPressGestureHandler>
-  //   );
-
   return (
     <View
       style={{

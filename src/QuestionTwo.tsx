@@ -6,9 +6,6 @@ import React from 'react';
 import {Dimensions, ScrollView, View} from 'react-native';
 import {Button, Icon, Text} from 'react-native-elements';
 import * as Progress from 'react-native-progress';
-import QuestionOne from './QuestionOne';
-import QuestionTwo from './QuestionTwo';
-import QuestionThree from './QuestionThree';
 
 const deviceWidth = Dimensions.get('window').width;
 
@@ -20,11 +17,7 @@ const containerStyle = {
   padding: 5,
 };
 
-interface Props {
-  screenObject: Element[];
-}
-
-const QuizScreen = ({screenObject}: Props) => {
+const QuestionTwo = () => {
   const input = React.useRef(null);
   const [prg, setPrg] = React.useState(0);
 
@@ -52,19 +45,13 @@ const QuizScreen = ({screenObject}: Props) => {
         ref={input}>
         <ScrollView
           style={{width: deviceWidth}}
-          contentContainerStyle={containerStyle}>
-          {screenObject[0]}
-        </ScrollView>
+          contentContainerStyle={containerStyle}></ScrollView>
         <ScrollView
           style={{width: deviceWidth}}
-          contentContainerStyle={containerStyle}>
-          {screenObject[1]}
-        </ScrollView>
+          contentContainerStyle={containerStyle}></ScrollView>
         <ScrollView
           style={{width: deviceWidth}}
-          contentContainerStyle={containerStyle}>
-          {screenObject[2]}
-        </ScrollView>
+          contentContainerStyle={containerStyle}></ScrollView>
         <ScrollView
           style={{width: deviceWidth}}
           contentContainerStyle={containerStyle}>
@@ -110,56 +97,4 @@ const QuizScreen = ({screenObject}: Props) => {
   );
 };
 
-const QuizController = ({navigation}) => {
-  return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: '#121212',
-        elevation: 0,
-        alignItems: 'center',
-        paddingTop: 10,
-      }}>
-      <View
-        style={{
-          width: '95%',
-        }}>
-        <Button
-          title="AI"
-          titleStyle={{fontSize: 30}}
-          containerStyle={{borderRadius: 20, marginBottom: 10}}
-          buttonStyle={{
-            padding: 20,
-            backgroundColor: '#191919',
-            elevation: 1,
-          }}
-          onPress={() => navigation.navigate('AI')}
-        />
-        <Button
-          title="ROBOTICS"
-          titleStyle={{fontSize: 30}}
-          containerStyle={{borderRadius: 20, marginBottom: 10}}
-          buttonStyle={{
-            padding: 20,
-            backgroundColor: '#191919',
-            elevation: 1,
-          }}
-          onPress={() => navigation.navigate('Robotics')}
-        />
-        <Button
-          title="AEROSPACE"
-          titleStyle={{fontSize: 30}}
-          containerStyle={{borderRadius: 20, marginBottom: 10}}
-          buttonStyle={{
-            padding: 20,
-            backgroundColor: '#191919',
-            elevation: 1,
-          }}
-          onPress={() => navigation.navigate('Aerospace')}
-        />
-      </View>
-    </View>
-  );
-};
-
-export default QuizController;
+export default QuestionTwo;
