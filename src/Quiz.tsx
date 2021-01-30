@@ -19,11 +19,11 @@ const containerStyle = {
 
 interface Props {
   screenObject: Element[];
-  questionSet: String;
+  questionSet: Number;
   callback: Function;
 }
 
-const QuizScreen = ({screenObject, callback}: Props) => {
+const QuizScreen = ({screenObject, callback, questionSet}: Props) => {
   const input = React.useRef(null);
   const [prg, setPrg] = React.useState(0);
 
@@ -71,8 +71,14 @@ const QuizScreen = ({screenObject, callback}: Props) => {
         </ScrollView>
         <ScrollView
           style={{width: deviceWidth}}
-          contentContainerStyle={containerStyle}>
-          <Text style={{alignSelf: 'center'}}>Final</Text>
+          contentContainerStyle={{...containerStyle, alignItems: 'center'}}>
+          <Progress.Circle size={50} indeterminate showsText />
+          <Text style={{alignSelf: 'center', fontSize: 20, paddingTop: 10}}>
+            Well done on completing this level.
+          </Text>
+          <Text style={{alignSelf: 'center', fontSize: 20}}>
+            You are the hero of science🦸.
+          </Text>
         </ScrollView>
       </ScrollView>
       <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>

@@ -3,16 +3,34 @@
  */
 
 import React from 'react';
-import {View, Image} from 'react-native';
+import {Alert, Image, View} from 'react-native';
+import {Button, Text} from 'react-native-elements';
 import * as Progress from 'react-native-progress';
-import {Button, Icon, Text} from 'react-native-elements';
-import pic1 from './img/human_alex.jpg';
 import pic2 from './img/crown.png';
+import pic1 from './img/human_alex.jpg';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useNavigation} from '@react-navigation/native';
+import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
 
 const prof_pic = Image.resolveAssetSource(pic1).uri;
 const icon = Image.resolveAssetSource(pic2).uri;
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = () => {
+  const [prog, setProg] = React.useState(0);
+  const navigation = useNavigation();
+
+  React.useEffect(() => {
+    return navigation.addListener('focus', () => {
+      console.log('listener A');
+      AsyncStorage.getItem('gamepoint')
+        .then((value) => {
+          console.log({'dict value': value});
+          setProg(value == null ? 0 : value / 3);
+        })
+        .catch((e) => console.error(e));
+    });
+  }, [prog]);
+
   return (
     <View
       style={{
@@ -21,17 +39,25 @@ const HomeScreen = ({navigation}) => {
         elevation: 0,
         paddingTop: 15,
       }}>
-      <Image
-        style={{
-          width: 200,
-          height: 200,
-          borderRadius: 500,
-          justifyContent: 'center',
-          marginTop: '15%',
-          alignSelf: 'center',
-        }}
-        source={{uri: prof_pic}}
-      />
+      <TouchableWithoutFeedback
+        onLongPress={() => {
+          AsyncStorage.setItem('gamepoint', '0').then(() => {
+            Alert.alert('Game reset!', 'Game has been reset to initial state');
+            setProg(0);
+          });
+        }}>
+        <Image
+          style={{
+            width: 200,
+            height: 200,
+            borderRadius: 500,
+            justifyContent: 'center',
+            marginTop: '15%',
+            alignSelf: 'center',
+          }}
+          source={{uri: prof_pic}}
+        />
+      </TouchableWithoutFeedback>
       <Text
         style={{
           fontSize: 30,
@@ -39,7 +65,7 @@ const HomeScreen = ({navigation}) => {
           alignSelf: 'center',
           marginTop: 10,
         }}>
-        ALEX LIMPEH
+        ALEX GATES
       </Text>
       <View style={{flexDirection: 'row', marginTop: 10, alignSelf: 'center'}}>
         <Image
@@ -59,7 +85,7 @@ const HomeScreen = ({navigation}) => {
         style={{alignSelf: 'center', marginTop: 17}}
         width={300}
         height={50}
-        progress={0.2}
+        progress={prog}
         borderColor="#03DAC5"
         color="#03DAC5"
         borderRadius={10}
