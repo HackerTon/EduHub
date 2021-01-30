@@ -2,10 +2,11 @@
  * @format
  */
 
-import React from 'react';
-import {Alert, Image} from 'react-native';
-import {CheckBox, Text} from 'react-native-elements';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
+import React from 'react';
+import {Image} from 'react-native';
+import {CheckBox, Text} from 'react-native-elements';
 import pic11 from './img/s1q1.jpg';
 import pic12 from './img/s1q2.jpg';
 import pic13 from './img/s1q3.jpg';
@@ -16,7 +17,6 @@ import pic31 from './img/s3q1.jpg';
 import pic32 from './img/s3q2.jpg';
 import pic33 from './img/s3q3.jpg';
 import {QuizScreen} from './Quiz';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // AI set
 const picQ1 = Image.resolveAssetSource(pic11).uri;

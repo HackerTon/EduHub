@@ -2,15 +2,15 @@
  * @format
  */
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {Alert, Image, View} from 'react-native';
 import {Button, Text} from 'react-native-elements';
+import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
 import * as Progress from 'react-native-progress';
 import pic2 from './img/crown.png';
 import pic1 from './img/human_alex.jpg';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useNavigation} from '@react-navigation/native';
-import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
 
 const prof_pic = Image.resolveAssetSource(pic1).uri;
 const icon = Image.resolveAssetSource(pic2).uri;
@@ -21,15 +21,18 @@ const HomeScreen = () => {
 
   React.useEffect(() => {
     return navigation.addListener('focus', () => {
-      console.log('listener A');
-      AsyncStorage.getItem('gamepoint')
-        .then((value) => {
-          console.log({'dict value': value});
-          setProg(value == null ? 0 : value / 3);
-        })
-        .catch((e) => console.error(e));
+      setTimeout(
+        () =>
+          AsyncStorage.getItem('gamepoint')
+            .then((value) => {
+              console.log({'dict value': value});
+              setProg(value == null ? 0 : value / 3);
+            })
+            .catch((e) => console.error(e)),
+        1000,
+      );
     });
-  }, [prog]);
+  }, [navigation]);
 
   return (
     <View
