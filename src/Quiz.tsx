@@ -6,9 +6,6 @@ import React from 'react';
 import {Dimensions, ScrollView, View} from 'react-native';
 import {Button, Icon, Text} from 'react-native-elements';
 import * as Progress from 'react-native-progress';
-import QuestionOne from './QuestionOne';
-import QuestionTwo from './QuestionTwo';
-import QuestionThree from './QuestionThree';
 
 const deviceWidth = Dimensions.get('window').width;
 
@@ -22,22 +19,29 @@ const containerStyle = {
 
 interface Props {
   screenObject: Element[];
+  questionSet: String;
+  callback: Function;
 }
 
-const QuizScreen = ({screenObject}: Props) => {
+const QuizScreen = ({screenObject, callback}: Props) => {
   const input = React.useRef(null);
   const [prg, setPrg] = React.useState(0);
 
-  const movePage = (foward: boolean) => {
-    if (foward) {
-      if (prg < deviceWidth * 3) {
-        input.current.scrollTo({x: prg + deviceWidth, y: 0, animated: true});
-        setPrg(prg + deviceWidth);
-      }
-    } else {
-      if (prg > 0) {
-        input.current.scrollTo({x: prg - deviceWidth, y: 0, animated: true});
-        setPrg(prg - deviceWidth);
+  const movePage = (forward: boolean) => {
+    const idx = prg / deviceWidth;
+
+    // function callback, if return 1 then continue else stay
+    if (callback(forward, idx)) {
+      if (forward) {
+        if (prg < deviceWidth * 3) {
+          input.current.scrollTo({x: prg + deviceWidth, y: 0, animated: true});
+          setPrg(prg + deviceWidth);
+        }
+      } else {
+        if (prg > 0) {
+          input.current.scrollTo({x: prg - deviceWidth, y: 0, animated: true});
+          setPrg(prg - deviceWidth);
+        }
       }
     }
   };
@@ -163,3 +167,4 @@ const QuizController = ({navigation}) => {
 };
 
 export default QuizController;
+export {QuizScreen};

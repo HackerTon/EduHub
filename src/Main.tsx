@@ -9,9 +9,7 @@ import {StatusBar} from 'react-native';
 import {ThemeProvider} from 'react-native-elements';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import HomeScreen from './Home';
-import QuestionOne from './QuestionOne';
-import QuestionThree from './QuestionThree';
-import QuestionTwo from './QuestionTwo';
+import {QuestionOne, QuestionTwo, QuestionThree} from './Questions';
 import QuizScreen from './Quiz';
 
 const Stack = createStackNavigator();

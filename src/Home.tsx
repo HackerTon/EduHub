@@ -85,47 +85,4 @@ const HomeScreen = ({navigation}) => {
   );
 };
 
-// const HomeNavigator = () => {
-//   const tabBarOptions: BottomTabBarOptions = {
-//     style: {
-//       backgroundColor: '#191919',
-//       borderTopWidth: 1,
-//       borderTopColor: 'grey',
-//     },
-//   };
-
-//   const homeOptions: BottomTabNavigationOptions = {
-//     tabBarIcon: ({focused}) => {
-//       let color = focused ? '#BB86FC' : '#8E8E8F';
-//       return <Icon name="home" type="feather" color={color}></Icon>;
-//     },
-//     tabBarLabel: ({focused}) => {
-//       let color = focused ? '#BB86FC' : '#8E8E8F';
-//       return <Text style={{color}}>Home</Text>;
-//     },
-//   };
-
-//   const regisOptions: BottomTabNavigationOptions = {
-//     tabBarIcon: ({focused}) => {
-//       let color = focused ? '#BB86FC' : '#8E8E8F';
-//       return <Icon name="user" type="feather" color={color}></Icon>;
-//     },
-//     tabBarLabel: ({focused}) => {
-//       let color = focused ? '#BB86FC' : '#8E8E8F';
-//       return <Text style={{color}}>User</Text>;
-//     },
-//   };
-
-//   return (
-//     <Tab.Navigator tabBarOptions={tabBarOptions}>
-//       <Tab.Screen name="Home" component={HomeScreen} options={homeOptions} />
-//       <Tab.Screen
-//         name="Registration"
-//         component={RegistrationScreen}
-//         options={regisOptions}
-//       />
-//     </Tab.Navigator>
-//   );
-// };
-
 export default HomeScreen;
